@@ -1,8 +1,6 @@
 package com.example.nasa2
 import android.os.Bundle
-import android.view.View
 import android.widget.ListView
-import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import okhttp3.*
 import org.json.JSONArray
@@ -10,7 +8,6 @@ import org.json.JSONObject
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
-    lateinit var progress:ProgressBar
     lateinit var listView_details: ListView
     var arrayList_details:ArrayList<Model> = ArrayList();
     //OkHttpClient creates connection pool between client and server
@@ -24,14 +21,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun run(url: String) {
-        progress.visibility = View.VISIBLE
         val request = Request.Builder()
             .url(url)
             .build()
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                progress.visibility = View.GONE
             }
 
             override fun onResponse(call: Call, response: Response) {
@@ -63,7 +58,6 @@ class MainActivity : AppCompatActivity() {
                     obj_adapter = CustomAdapter(applicationContext,arrayList_details)
                     listView_details.adapter=obj_adapter
                 }
-                progress.visibility = View.GONE
             }
         })
     }

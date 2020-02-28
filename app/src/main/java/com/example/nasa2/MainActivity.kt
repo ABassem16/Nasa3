@@ -1,16 +1,13 @@
+package com.example.nasa2
 import android.os.Bundle
 import android.view.View
 import android.widget.ListView
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
-import com.example.nasa2.CustomAdapter
-import com.example.nasa2.Model
-import com.example.nasa2.R
 import okhttp3.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
-import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     lateinit var progress:ProgressBar
@@ -18,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     var arrayList_details:ArrayList<Model> = ArrayList();
     //OkHttpClient creates connection pool between client and server
     val client = OkHttpClient()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

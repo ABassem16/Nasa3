@@ -1,6 +1,5 @@
 package com.example.nasa2
 import android.os.Bundle
-import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import okhttp3.*
 import org.json.JSONArray
@@ -8,7 +7,6 @@ import org.json.JSONObject
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
-    lateinit var listView_details: ListView
     var arrayList_details:ArrayList<Model> = ArrayList();
     //OkHttpClient creates connection pool between client and server
     val client = OkHttpClient()
@@ -16,7 +14,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        listView_details = findViewById<ListView>(R.id.listView) as ListView
         run("https://api.nasa.gov/planetary/apod?api_key=jTcWV0pmMmG6SOjwIGacrJLlDm1Vj5fmZsO0TBMP")
     }
 
@@ -56,7 +53,6 @@ class MainActivity : AppCompatActivity() {
                     //stuff that updates ui
                     val obj_adapter : CustomAdapter
                     obj_adapter = CustomAdapter(applicationContext,arrayList_details)
-                    listView_details.adapter=obj_adapter
                 }
             }
         })
